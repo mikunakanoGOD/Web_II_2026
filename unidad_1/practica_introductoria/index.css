@@ -1,0 +1,462 @@
+.titulo-principal {
+    font-family: 'Georgia', serif;
+    font-size: 26px;
+    color: #1f2a44;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.titulo-principal::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #2f5cff;
+    margin: 10px auto 0;
+}
+
+
+
+body {
+        padding-top: 5px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        font-family: 'Playfair Display', serif;
+    }
+    .nav-link {
+        font-size: 1.1rem;
+        color: #FFFFFF;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+    }
+    .navbar a:hover {
+        color: #ffc107;
+    } 
+    .navbar {
+        background: rgba(0, 0, 0, 0.5);
+        transition: background 0.3s ease;
+    }
+
+    .hero-container {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-image {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        animation: fadeIn 1s ease-in;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(11, 11, 128, 0.3) 100%);
+        z-index: 1;
+    }
+
+    .hero-texto {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 2;
+        animation: slideUp 0.8s ease-out;
+    }
+    .hero-texto h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        font-family: 'Playfair Display', serif;
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+        margin-bottom: 15px;
+    }
+    .hero-texto p {
+        font-size: 1.5rem;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        margin-bottom: 20px;
+    }
+
+    .btn-hero {
+        padding: 12px 40px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+        background-color: #ffb300;
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -30%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    #contenido {
+        --line-color: blue;
+        border-top: 2px solid var(--line-color);
+        border-bottom: 2px solid var(--line-color);
+        padding-bottom: 30px;
+        background-color: #f0f4f8;
+        animation: slideInUp 0.8s ease-out;
+    }
+
+    #contenido h2{
+        color: darkblue;
+        font-size: 3rem;
+        font-weight: 700;
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+    }
+    #contenido p {
+        color: black;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    /* SERVICIOS */
+    #contenidoServ {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #contenidoServ h2{
+        color: black;
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+        font-family: 'Playfair Display', serif;
+        animation: slideInUp 0.8s ease-out;
+    }
+
+    .service-card {
+        background: white;
+        padding: 0;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 360px;
+        /* ancho fijo para que todas las tarjetas tengan exactamente el mismo tamaño */
+        width: 320px;
+        min-width: 320px;
+        animation: slideInUp 0.8s ease-out;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        color: #00bfff;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    .service-card h3 {
+        color: darkblue;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .service-card p {
+        color: #666;
+        text-align: center;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Imagenes dentro de service-card para igualar tamaño */
+    .service-card .card-img-top {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .service-card .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1 1 auto;
+    }
+
+    /* Centrar tarjetas en su contenedor */
+    .d-flex.flex-row {
+        justify-content: center;
+    }
+
+    #columna {
+        --line-color: blue;
+        border-left: 2px solid var(--line-color);
+        border-right: 2px solid var(--line-color);
+    }
+
+    /* RESPONSIVO SERVICIOS */
+    @media (max-width: 768px) {
+        .hero-texto h1 {
+            font-size: 2.5rem;
+        }
+        .hero-texto p {
+            font-size: 1.2rem;
+        }
+        #contenido h2 {
+            font-size: 2rem;
+        }
+        #contenidoServ h2 {
+            font-size: 1.5rem;
+        }
+        .service-card {
+            padding: 20px 15px;
+            /* en pantallas medianas, permitir que las tarjetas sean más estrechas pero mantengan proporción */
+            width: 280px;
+            min-width: 280px;
+        }
+        .service-icon {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-texto h1 {
+            font-size: 1.8rem;
+        }
+        .hero-texto p {
+            font-size: 1rem;
+        }
+        .btn-hero {
+            padding: 10px 30px;
+            font-size: 0.95rem;
+        }
+        #contenido h2 {
+            font-size: 1.5rem;
+        }
+        #contenido p {
+            font-size: 1.2rem;
+        }
+        #contenidoServ h2 {
+            font-size: 1.2rem;
+        }
+        .service-card {
+            padding: 15px 12px;
+            /* en móvil, tarjetas a ancho completo */
+            width: 100%;
+            min-width: 0;
+        }
+        .service-icon {
+            font-size: 2rem;
+        }
+        .service-card h3 {
+            font-size: 1rem;
+        }
+        .service-card p {
+            font-size: 0.85rem;
+        }
+    }
+
+    #odontologosCarousel {
+    padding: 40px 0;
+}
+
+#odontologosCarousel .carousel-item {
+    transition: transform 0.8s ease;
+}
+
+#odontologosCarousel img.rounded-circle {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+
+#odontologosCarousel img.rounded-circle:hover {
+    transform: scale(1.08);
+}
+
+#odontologosCarousel h4 {
+    font-weight: 700;
+    color: #2c3e50;
+    margin-top: 15px;
+}
+
+#odontologosCarousel p.text-muted {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f39c12 !important;   /* color naranja/dorado que combina con tu botón */
+}
+
+#odontologosCarousel p:not(.text-muted) {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Indicadores personalizados (opcional, más elegantes) */
+#odontologosCarousel .carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 6px;
+}
+
+#odontologosCarousel .carousel-indicators .active {
+    background-color: #f39c12;
+}
+
+/* Flechas del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+    footer {
+        background: #1a1a1a;
+        color: white;
+        padding-bottom: 30px;
+    }
+    #contenidoFoot {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    #contenidoFoot p {
+        color: #d0d0d0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    #contenidoFoot h3 {
+        color: #00bfff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .footer-icon {
+        max-width: 80px;
+        height: auto;
+        filter: brightness(1.2);
+    }
+    .footer-link {
+        color: #00bfff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .footer-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+    .footer-divider {
+        border-color: rgba(0, 191, 255, 0.3);
+        margin: 20px 0;
+    }
+    #contenidoFoot p:last-child {
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    /* Responsivo footer */
+    @media (max-width: 768px) {
+        #contenidoFoot h3 {
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+        #contenidoFoot p {
+            font-size: 0.9rem;
+        }
+        .footer-icon {
+            max-width: 60px;
+        }
+    }
+    @media (max-width: 576px) {
+        footer {
+            padding: 20px 0;
+        }
+        #contenidoFoot {
+            padding-top: 20px;
+        }
+        #contenidoFoot h3 {
+            font-size: 0.95rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #contenidoFoot p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        .footer-icon {
+            max-width: 50px;
+        }
+    }
