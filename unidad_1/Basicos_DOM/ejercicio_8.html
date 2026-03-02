@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USI DE STYLE</title>
+</head>
+<body>
+    <p>uno</p>
+    <p>dos</p>
+    <p>tres</p>
+    <p>cuatro</p>
+    <script>
+        const parrafos = document.querySelectorAll("p");
+
+        parrafos.forEach((elemento, index) => {
+
+            elemento.style.color = "white";
+
+            if(index === 0){
+                elemento.style.backgroundColor = "blue";
+            } 
+            else if(index === 1){
+                elemento.style.backgroundColor = "green";
+            }
+            else if(index === 2){
+                elemento.style.backgroundColor = "purple";
+            }
+            else{
+                elemento.style.backgroundColor = "orange";
+            }
+
+            
+            elemento.style.fontSize = "20px";
+
+            elemento.style.border = "2px solid black";
+
+            
+            elemento.style.textAlign = "center";
+
+            
+            elemento.style.padding = "10px";
+
+            
+            if(index === 3){
+                elemento.textContent = "CUATRO MODIFICADO";
+            }
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio 14 stoppropagation</title>
+</head>
+<body>
+    <div id="padre">elemento padre
+        <div id="hijo">elemento hijo</div>
+    </div>
+    <script>
+        const elementohijo=document.getElementById('hijo')
+        elementohijo.addEventListener('click', ()=>{
+            event.stopPropagation() //detiene la propagacion del evento
+            alert('has hecho clic en el elemento hijo')
+        })
+        const elementopadre=document.getElementById('padre')
+        elementopadre.addEventListener('click',(evento)=>{
+            alert('has hecho clic en el elemento padre')
+        })
+    </script>
+</body>
+</html>
