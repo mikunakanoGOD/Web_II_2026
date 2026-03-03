@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+
+:root {
+    --color-primaria: #000000;
+    --color-secundaria: #F6F6F6;
+    --color-terciaria: #22D4FD;
+    --color-hover: #272727;
+
+    --fuente-krona: 'Krona One', sans-serif;
+    --fuente-montserrat: 'Montserrat', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables (oscuro elegante) */
+:root{
+    --bg: #0b0f14;            /* fondo principal */
+    --panel: #111827;         /* paneles */
+    --text: #e5e7eb;          /* texto principal */
+    --muted: #9ca3af;         /* texto secundario */
+    --line: rgba(255,255,255,0.08); /* bordes sutiles */
+    --accent: #d4af37;        /* dorado elegante */
+    --hover: rgba(212,175,55,0.12);
+}
+
+/* Body */
+body {
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% 10%, rgba(212,175,55,0.08), transparent 60%),
+                radial-gradient(900px 500px at 80% 30%, rgba(255,255,255,0.05), transparent 55%),
+                var(--bg);
+    color: var(--text);
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 60px;
+    z-index: 10;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 26px;
+}
+
+.header__menu__link {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: 0.25s ease;
+}
+
+.header__menu__link:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.06);
+}
+
+/* Layout principal */
+.presentacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    padding: 80px 60px;
+}
+
+/* Contenido */
+.presentacion__contenido {
+    width: 52%;
+}
+
+.presentacion__contenido__titulo {
+    font-size: 42px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+.presentacion__contenido__titulo strong,
+.titulo-destaque{
+    color: var(--accent);
+}
+
+.presentacion__contenido__texto {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+/* Imagen */
+.presentacion__imagen {
+    width: 340px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    transition: 0.3s ease;
+}
+
+.presentacion__imagen:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212,175,55,0.35);
+}
+
+/* Redes */
+.presentacion__enlaces {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.presentacion__enlaces__subtitulo {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* Botones tipo “pill” */
+.presentacion__enlaces__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 60%;
+    padding: 12px 0;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.04);
+    transition: 0.25s ease;
+}
+
+.presentacion__enlaces__link:hover {
+    border-color: rgba(212,175,55,0.40);
+    background: var(--hover);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--line);
+    background: rgba(17, 24, 39, 0.35);
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+}
