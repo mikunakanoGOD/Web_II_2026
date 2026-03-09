@@ -10,7 +10,11 @@ import deleteIcon from "./components/deleteIcon.js"
         event.preventDefault(); 
         
         const input = document.querySelector('[data-form-input]');
-        const value = input.value; // Recupero el valor del input
+        const value = input.value.trim(); // Recupero el valor del input
+        if (value === '') {
+            alert('Debes escribir una tarea');
+            return;
+}
         
         const list = document.querySelector('[data-list]');
         

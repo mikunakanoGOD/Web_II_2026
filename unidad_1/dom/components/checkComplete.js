@@ -2,7 +2,7 @@
     const checkcomplete = () => {
         const i = document.createElement('i');
         // Se añaden las clases por separado cuando hay espacios en el nombre
-        i.classList.add('far', 'fa-check-square', 'icon');
+        i.classList.add('fa', 'fa-solid', 'fa-clipboard-check', 'icon');
         i.addEventListener('click', color);
         return i; // Es vital retornar el elemento para que appendChild lo encuentre
     }
