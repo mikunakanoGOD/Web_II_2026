@@ -1,0 +1,151 @@
+/* FLEXBOX LAYOUT */
+
+/* Header con Flexbox */
+.headerPrincipal .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.headerPrincipal-nav {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+/* Productos Grid con Flexbox */
+.contenidoPrincipal-productos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.contenidoPrincipal-productos-link {
+	flex: 1 1 100%;
+	min-width: 0;
+}
+
+/* Video Section con Flexbox */
+.videoSobre .container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.videoSobre-sobre {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.videoSobre-sobre-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0;
+}
+
+/* Footer con Flexbox */
+.rodapePrincipal-navMap-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.rodapePrincipal-patrocinadores-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 2rem 0;
+}
+
+.rodapePrincipal-contatoForm-fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+/* TABLET - 768px */
+@media(min-width: 768px) {
+	
+	/* Header horizontal */
+	.headerPrincipal .container {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.headerPrincipal-nav {
+		flex-direction: row;
+		width: auto;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	
+	/* Productos en 2 columnas */
+	.contenidoPrincipal-productos-link {
+		flex: 1 1 calc(50% - 1%);
+	}
+	
+	/* Video section lado a lado */
+	.videoSobre .container {
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.videoSobre-video {
+		flex: 1 1 50%;
+	}
+	
+	.videoSobre-sobre {
+		flex: 1 1 50%;
+	}
+	
+	/* Footer patrocinadores horizontal */
+	.rodapePrincipal-patrocinadores-list {
+		flex-direction: row;
+		justify-content: center;
+	}
+	
+	.rodapePrincipal-contatoForm-fieldset {
+		flex-direction: row;
+	}
+}
+
+/* DESKTOP - 1024px */
+@media(min-width: 1024px) {
+	
+	/* Productos en 3 columnas */
+	.contenidoPrincipal-productos-link {
+		flex: 1 1 calc(33.333% - 1%);
+	}
+	
+	/* Footer navigation en grid */
+	.rodapePrincipal-navMap-list {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+	}
+	
+	.navmap-list-title {
+		grid-column: span 1;
+	}
+}
+
+/* DESKTOP LARGE - 1200px */
+@media(min-width: 1200px) {
+	
+	/* Productos en 4 columnas */
+	.contenidoPrincipal-productos-link {
+		flex: 1 1 calc(25% - 1%);
+	}
+}
