@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Local Server</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Open+Sans&family=Parisienne&display=swap" rel="stylesheet"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main>
+    <div class="container">
+        <header>
+            <h1>CRUD Local Server</h1>
+        </header>
+
+        <div class="controls">
+            <button class="btn btn-get" onclick="getData()">Obtener Posts (GET)</button>
+            <button class="btn btn-post" onclick="postData()">Crear Post (POST)</button>
+            <button class="btn btn-put" onclick="putData()">Actualizar Post 1 (PUT)</button>
+            <button class="btn btn-delete" onclick="deleteData()">Eliminar Post 1 (DELETE)</button>
+        </div>
+
+        <section class="form-section">
+            <h2>Formulario de Post</h2>
+            <form class="post-form" data-form>
+                <div class="form-group">
+                    <label for="inputTitulo">Título</label>
+                    <input id="inputTitulo" type="text" data-input-task placeholder="Título del post" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescripcion">Descripción</label>
+                    <textarea id="inputDescripcion" data-input-descripcion rows="4" placeholder="Descripción del post" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="inputFecha">Fecha</label>
+                    <input id="inputFecha" type="date" data-input-fecha>
+                </div>
+                <button type="submit" class="btn btn-post">Enviar post a API</button>
+            </form>
+            <p>Usa este formulario para enviar tus datos a <code>api/db.json</code> (ruta: <code>/posts</code>).</p>
+        </section>
+
+        <div class="results">
+            <h3>Resultados:</h3>
+            <div id="status"></div>
+            <pre id="result">RESULTADO..</pre>
+        </div>
+</div>
+
+    <script src="js/get.js"></script>
+    <script src="js/post.js"></script>
+    <script src="js/put.js"></script>
+    <script src="js/delete.js"></script>
+    
+    <script>
+        function showResult(data, isError = false) {
+            const statusEl = document.getElementById('status');
+            const resultEl = document.getElementById('result');
+            
+            if (isError) {
+                statusEl.innerHTML = '<div class="status status-error">Error en la operación</div>';
+                resultEl.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+            } else {
+                statusEl.innerHTML = '<div class="status status-success">Operación exitosa</div>';
+                resultEl.textContent = JSON.stringify(data, null, 2);
+            }
+        }
+    </script>
+    <script type="module" src="./components/formulario.js"></script>
+    </main>
+</body>
+</html>
