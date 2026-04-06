@@ -1,0 +1,23 @@
+[
+  {
+    "task": "Diseñar interfaz",
+    "description": "Crear mockups de la pantalla principal",
+    "date": "2026-04-10",
+    "priority": "Alta",
+    "completed": false
+  },
+  {
+    "task": "Conectar API",
+    "description": "Integrar endpoints del backend",
+    "date": "2026-04-12",
+    "priority": "Media",
+    "completed": true
+  },
+  {
+    "task": "Escribir tests",
+    "description": "Cubrir los componentes principales",
+    "date": "2026-04-15",
+    "priority": "Baja",
+    "completed": false
+  }
+]
