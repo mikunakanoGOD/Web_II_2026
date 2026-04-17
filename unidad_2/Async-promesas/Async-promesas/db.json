@@ -1,9 +1,36 @@
 {
   "perfil": [
     {
+      "nombre": "edwin",
+      "email": "edwinmiguelzambranasiles@gmail.com",
+      "id": "NxdxlKDSI64"
+    }
+  ],
+  "productos": [
+    {
       "nombre": "FULANITO",
-      "email": "fulanito@univalle.com",
-      "id": 1
+      "precio": "86",
+      "id": "vqk_lSiFBkk"
+    },
+    {
+      "nombre": "FULANITO",
+      "precio": "34",
+      "id": "afBYHhfCBp4"
+    },
+    {
+      "nombre": "ddd",
+      "precio": "45",
+      "id": "K7nHzcTGmqs"
+    }
+  ],
+  "Mascotas": [
+    {
+      "nombre": "scot",
+      "raza": "labrador",
+      "edad": "14",
+      "peso": "53",
+      "id-dueño": "159",
+      "id": "ODiMDWy1Sm4"
     }
   ]
 }

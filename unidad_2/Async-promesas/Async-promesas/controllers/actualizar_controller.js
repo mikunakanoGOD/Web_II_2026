@@ -2,9 +2,9 @@ import { clientService } from "../service/client-service.js";
 const formulario = document.querySelector("[data-form]");
 const obInfo = async()=>{
     const url = new URL(window.location);
-    const id = (yrl.searchParams.get("id"))
+    const id = (url.searchParams.get("id"))
     if(id==null){
-        window.location.href="/screens/errors.html"
+        window.location.href="../screens/error.html"
     }
     const nombre = document.querySelector("[data-nombre]")
     const email = document.querySelector("[data-email]")
@@ -17,7 +17,7 @@ const obInfo = async()=>{
             throw new Error();
         }
     }catch(error){
-        window.location.href="../screens/errors.html"
+        window.location.href="../screens/error.html"
     }
 };
 obInfo();
@@ -29,6 +29,6 @@ formulario.addEventListener("submit",(evento)=>{
     const nombre = document.querySelector("[data-nombre]").value;
     const email = document.querySelector("[data-email]").value;
     clientService.actualizarCliente(nombre,email,id).then(()=>{
-        window.location.href="/screens/registro_cliente.html";
+        window.location.href="../screens/edicion_concluida.html";
     });
 })

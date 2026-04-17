@@ -56,46 +56,46 @@ listar_clientes().then((data) => {
 })
 .catch((error) => alert("sin conexion"));*/
 
-const listar_clientes = () => fetch('http://localhost:3000/perfil').then((response) => response.json()).catch((err)=>console.log('el error aqui',err));
+const listar_productos = () => fetch('http://localhost:3000/productos').then((response) => response.json()).catch((err)=>console.log('el error aqui',err));
 
-const crearCliente = (nombre, email) => {
-    return fetch('http://localhost:3000/perfil', {
+const crearProducto = (nombre, precio) => {
+    return fetch('http://localhost:3000/productos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ nombre, email, id: uuid.v4() })
+        body: JSON.stringify({ nombre, precio, id: uuid.v4() })
     });
 }
 
-const actualizarCliente = (nombre, email, id) => {
-    return fetch(`http://localhost:3000/perfil/${id}`, {
+const actualizarProducto = (nombre, precio, id) => {
+    return fetch(`http://localhost:3000/productos/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ nombre, email })
+        body: JSON.stringify({ nombre, precio })
     })
     .then(respuesta=>console.log(respuesta)).catch(error=>console.log(error));
 };
 
-const eliminarCliente = (id) => {
-    console.log("eliminar cliente con id: ", id);
-    return fetch(`http://localhost:3000/perfil/${id}`, {
+const eliminarProducto = (id) => {
+    console.log("eliminar producto con id: ", id);
+    return fetch(`http://localhost:3000/productos/${id}`, {
         method: 'DELETE'
     }).catch(error=>alert("error aqui"));
 };
 
 //REFERECINA A ID
-const cliente = (id) => {
-    return fetch(`http://localhost:3000/perfil/${id}`).then((response)=>response.json())
+const producto = (id) => {
+    return fetch(`http://localhost:3000/productos/${id}`).then((response)=>response.json())
     .catch((error)=>console.log(error));
 }
 
-export const clientService = {
-    listar_clientes,
-    crearCliente,
-    actualizarCliente,
-    eliminarCliente,
-    cliente
+export const productService = {
+    listar_productos,
+    crearProducto,
+    actualizarProducto,
+    eliminarProducto,
+    producto
 };

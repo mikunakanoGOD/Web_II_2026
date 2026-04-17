@@ -3,7 +3,7 @@
     <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doguito Petshop | Cadastro de cliente</title>
+    <title>Doguito Petshop | Actualizar cliente</title>
     <link rel="icon" href="../assets/img/doguitoadm.svg" type="image/x-icon" />
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
@@ -31,46 +31,44 @@
         <ul class="header__list-nav">
             <li class="header__link"><a href="#">Dashboard</a></li>
             <li class="header__link"><a href="./listar_producto.html">Productos</a></li>
-            <li class="header__link"><a href="./lista_cliente.html">Clientes</a></li>
+            <li class="header__link"><a href="./lista_cliente.html">Clientes </a></li>
             <li class="header__link"><a href="./listar_mascotas.html">Pets</a></li>
         </ul>
         </nav>
     </header>
     <main class="container flex flex--center flex--column">
         <section class="card cadastro">
-        <h1 class="card__title">Nuevo Producto</h1>
-        <form class="flex flex--column" data-form>
+        <h1 class="card__title">Editar Mascota</h1>
+        <form action="#" class="flex flex--column" data-form>
             <div class="input-container">
-            <input
-                name="nombre"
-                id="nombre"
-                class="input"
-                type="text"
-                placeholder="Nombre"
-                required
-                data-nombre
-            />
+            <input name="nombre" id="nombre" class="input" type="text" placeholder="nombre" required data-nombre />
             <label class="input-label" for="nombre">Nombre</label>
             <span class="input-menssage-error">Este campo es requerido</span>
             </div>
             <div class="input-container">
-            <input
-                name="email"
-                id="email"
-                class="input"
-                type="text"
-                placeholder="email"
-                required
-                data-email
-            />
-            <label class="input-label" for="email">Precio</label>
+            <input name="raza" id="raza" class="input" type="text" placeholder="raza" required data-raza />
+            <label class="input-label" for="raza">Raza</label>
             <span class="input-menssage-error">Este campo es requerido</span>
             </div>
-            <button type="submit" class="button">Registrar</button>
+            <div class="input-container">
+            <input name="edad" id="edad" class="input" type="text" placeholder="edad" required data-edad />
+            <label class="input-label" for="edad">Edad</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+            </div>
+            <div class="input-container">
+            <input name="peso" id="peso" class="input" type="text" placeholder="peso" required data-peso />
+            <label class="input-label" for="peso">Peso</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+            </div>
+            <div class="input-container">
+            <input name="iddueno" id="iddueno" class="input" type="text" placeholder="ID Dueño" required data-iddueno />
+            <label class="input-label" for="iddueno">ID Dueño</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+            </div>
+            <button type="submit" class="button">Editar Mascota</button>
         </form>
         </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type ="module" src="../controllers/registro_producto_controller.js"></script>
+    <script type="module" src="../controllers/actualizar_controller_mascota.js"></script>
     </body>
 </html>
