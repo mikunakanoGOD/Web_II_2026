@@ -1,96 +1,115 @@
-//recepcion de datos
-/*const CrearFila = (nombre, email) => {
-    const fila = document.createElement('tr');
-    //html como variable
-    const contenido = `
-    <td class="td" data-td>
-    ${nombre}
-    </td>
-    <td>${email}</td>
-    <td>
-    <ul class="table__button-control">
-        <li>
-        
-            href="../screens/editar_cliente.html"
-            class="simple-button simple-button--edit"
-        >
-            Editar
-        </a>
-        </li>
-        <li>
-        <button class="simple-button simple-button--delete" type="button">
-            Eliminar
-        </button>
-        </li>
-    </ul>
-    </td>
-    `;
-    fila.innerHTML = contenido;
-    return fila;        
-}*/
+// ============================================================
+// OPCION 1 - XAMPP (descomentar este bloque y comentar supabase)
+// ============================================================
+/*
+const API_BASE_URL = "http://localhost/Async-promesas/api/producto.php";
 
-/*const table = document.querySelector('[data-table]');
-
-const listar_clientes = () => {
-    const promesa = new Promise((resolve, reject) => {
-        const http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3000/perfil');
-        http.send();
-        http.onload = () => {
-            const response = JSON.parse(http.response);
-            if (http.response >= 400) {
-                reject(response);
-            } else {
-                resolve(response);
-            }
-        }
-    });
-    return promesa;
+const listar_productos = () => {
+    return fetch(API_BASE_URL)
+        .then(response => {
+            if (!response.ok) throw new Error("Error al obtener productos");
+            return response.json();
+        });
 };
 
-listar_clientes().then((data) => {
-    data.forEach((perfil) => {
-        const nuevaFila = CrearFila(perfil.nombre, perfil.email);
-        table.appendChild(nuevaFila);
-    });
-})
-.catch((error) => alert("sin conexion"));*/
-
-const listar_productos = () => fetch('http://localhost:3000/productos').then((response) => response.json()).catch((err)=>console.log('el error aqui',err));
+const producto = (id) => {
+    return fetch(`${API_BASE_URL}?id=${id}`)
+        .then(response => {
+            if (!response.ok) throw new Error("Error al obtener producto");
+            return response.json();
+        });
+};
 
 const crearProducto = (nombre, precio) => {
-    return fetch('http://localhost:3000/productos', {
+    return fetch(API_BASE_URL, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nombre, precio, id: uuid.v4() })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, precio })
+    }).then(response => {
+        if (!response.ok) throw new Error("Error al crear producto");
+        return response.json();
     });
-}
+};
 
 const actualizarProducto = (nombre, precio, id) => {
-    return fetch(`http://localhost:3000/productos/${id}`, {
+    return fetch(API_BASE_URL, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nombre, precio })
-    })
-    .then(respuesta=>console.log(respuesta)).catch(error=>console.log(error));
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, precio, id })
+    }).then(response => {
+        if (!response.ok) throw new Error("Error al actualizar producto");
+        return response.json();
+    });
 };
 
 const eliminarProducto = (id) => {
-    console.log("eliminar producto con id: ", id);
-    return fetch(`http://localhost:3000/productos/${id}`, {
+    return fetch(`${API_BASE_URL}?id=${id}`, {
         method: 'DELETE'
-    }).catch(error=>alert("error aqui"));
+    }).then(response => {
+        if (!response.ok) throw new Error("Error al eliminar producto");
+        return response.json();
+    });
+};
+*/
+
+// ============================================================
+// OPCION 2 - SUPABASE (activo por defecto)
+// ============================================================
+const URL_SUPABASE = "https://cvlxullqviutsczcuekd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_0jN9VtjtbkjUIATNsAhGNA_-F0LwxzO";
+const table = 'productos';
+const API_URL = `${URL_SUPABASE}/rest/v1/${table}`;
+
+const HEADERS = {
+    'apikey': SUPABASE_KEY,
+    'Authorization': `Bearer ${SUPABASE_KEY}`,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=representation'
 };
 
-//REFERECINA A ID
+const request = async (url, option = {}) => {
+    const res = await fetch(url, { headers: HEADERS, ...option });
+    const text = await res.text();
+    const data = text ? JSON.parse(text) : null;
+    if (!res.ok) {
+        const mensaje = data?.message ?? data?.error ?? text ?? 'Error';
+        throw new Error(mensaje);
+    }
+    return data;
+};
+
+// get
+const listar_productos = () => {
+    return request(`${API_URL}?select=id,nombre,precio`);
+};
+
+// get por id
 const producto = (id) => {
-    return fetch(`http://localhost:3000/productos/${id}`).then((response)=>response.json())
-    .catch((error)=>console.log(error));
-}
+    return request(`${API_URL}?id=eq.${id}&select=id,nombre,precio`).then(data => data[0]);
+};
+
+// post
+const crearProducto = (nombre, precio) => {
+    return request(API_URL, {
+        method: 'POST',
+        body: JSON.stringify({ nombre, precio })
+    }).then(data => data?.[0]);
+};
+
+// patch
+const actualizarProducto = (nombre, precio, id) => {
+    return request(`${API_URL}?id=eq.${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ nombre, precio })
+    }).then(data => data?.[0] ?? Promise.reject(new Error('no se pudo actualizar')));
+};
+
+// delete
+const eliminarProducto = (id) => {
+    return request(`${API_URL}?id=eq.${id}`, {
+        method: 'DELETE'
+    }).then(data => data?.[0] ?? Promise.reject(new Error('no se pudo eliminar')));
+};
 
 export const productService = {
     listar_productos,
