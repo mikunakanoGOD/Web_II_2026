@@ -30,8 +30,10 @@ const crearfila = (nombre, email,id) =>{
  const btn = fila.querySelector("button");
     btn.addEventListener("click",()=>{
         const id=btn.id;
-        clientService.eliminarCliente(id).then(respuesta=>alert("eliminado").window.location.reload()
-    ).catch(error=>console.log("error"));
+        clientService.eliminarCliente(id).then(respuesta=>{
+            alert("eliminado");
+            window.location.reload();
+        }).catch(error=>console.log("error"));
     });
     return fila;
 };

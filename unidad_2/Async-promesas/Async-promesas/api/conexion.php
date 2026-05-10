@@ -9,20 +9,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-// 🔹 Conexión a la base de datos
+// conexion a la base de datos
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webII_2026";
+$username   = "root";
+$password   = "";
+$dbname     = "webII_2026";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     http_response_code(500);
-    die(json_encode(["error" => "Error de conexión: " . $conn->connect_error]));
+    die(json_encode(["error" => "Error de conexion: " . $conn->connect_error]));
 }
 
-// 🔹 Método HTTP
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
@@ -32,27 +31,25 @@ switch ($method) {
         $id = $_GET['id'] ?? null;
 
         if ($id) {
-            $stmt = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
-            $stmt->bind_param("i", $id);
+            $stmt = $conn->prepare("SELECT * FROM clientes WHERE id = ?");
+            $stmt->bind_param("s", $id);
             $stmt->execute();
-            $result = $stmt->get_result();
-            $usuario = $result->fetch_assoc();
+            $result  = $stmt->get_result();
+            $cliente = $result->fetch_assoc();
 
-            if ($usuario) {
-                echo json_encode($usuario);
+            if ($cliente) {
+                echo json_encode($cliente);
             } else {
                 http_response_code(404);
-                echo json_encode(["error" => "Usuario no encontrado"]);
+                echo json_encode(["error" => "Cliente no encontrado"]);
             }
         } else {
-            $result = $conn->query("SELECT * FROM usuarios");
-            $usuarios = [];
-
+            $result   = $conn->query("SELECT * FROM clientes");
+            $clientes = [];
             while ($row = $result->fetch_assoc()) {
-                $usuarios[] = $row;
+                $clientes[] = $row;
             }
-
-            echo json_encode($usuarios);
+            echo json_encode($clientes);
         }
     break;
 
@@ -60,24 +57,21 @@ switch ($method) {
     case 'POST':
         $input = json_decode(file_get_contents("php://input"), true);
 
-        if (!isset($input['nombre']) || !isset($input['email'])) {
+        if (!isset($input['nombre'], $input['email'])) {
             http_response_code(400);
             echo json_encode(["error" => "Faltan datos"]);
             break;
         }
 
         $nombre = $input['nombre'];
-        $email = $input['email'];
+        $email  = $input['email'];
 
-        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO clientes (nombre, email) VALUES (?, ?)");
         $stmt->bind_param("ss", $nombre, $email);
 
         if ($stmt->execute()) {
             http_response_code(201);
-            echo json_encode([
-                "message" => "Usuario creado",
-                "id" => $conn->insert_id
-            ]);
+            echo json_encode(["message" => "Cliente creado", "id" => $conn->insert_id]);
         } else {
             http_response_code(500);
             echo json_encode(["error" => "Error al crear: " . $stmt->error]);
@@ -94,15 +88,15 @@ switch ($method) {
             break;
         }
 
-        $id = $input['id'];
+        $id     = $input['id'];
         $nombre = $input['nombre'];
-        $email = $input['email'];
+        $email  = $input['email'];
 
-        $stmt = $conn->prepare("UPDATE usuarios SET nombre = ?, email = ? WHERE id = ?");
-        $stmt->bind_param("ssi", $nombre, $email, $id);
+        $stmt = $conn->prepare("UPDATE clientes SET nombre = ?, email = ? WHERE id = ?");
+        $stmt->bind_param("sss", $nombre, $email, $id);
 
         if ($stmt->execute()) {
-            echo json_encode(["message" => "Usuario actualizado"]);
+            echo json_encode(["message" => "Cliente actualizado"]);
         } else {
             http_response_code(500);
             echo json_encode(["error" => "Error al actualizar: " . $stmt->error]);
@@ -119,21 +113,20 @@ switch ($method) {
             break;
         }
 
-        $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
-        $stmt->bind_param("i", $id);
+        $stmt = $conn->prepare("DELETE FROM clientes WHERE id = ?");
+        $stmt->bind_param("s", $id);
 
         if ($stmt->execute()) {
-            echo json_encode(["message" => "Usuario eliminado"]);
+            echo json_encode(["message" => "Cliente eliminado"]);
         } else {
             http_response_code(500);
             echo json_encode(["error" => "Error al eliminar: " . $stmt->error]);
         }
     break;
 
-    // ================= ERROR =================
     default:
         http_response_code(405);
-        echo json_encode(["error" => "Método no permitido"]);
+        echo json_encode(["error" => "Metodo no permitido"]);
 }
 
 $conn->close();

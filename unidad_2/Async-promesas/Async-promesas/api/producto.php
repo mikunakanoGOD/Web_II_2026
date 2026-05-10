@@ -11,15 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 // conexion a la base de datos
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webII_2026";
+$username   = "root";
+$password   = "";
+$dbname     = "webII_2026";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     http_response_code(500);
-    die(json_encode(["error" => "Error de conexión: " . $conn->connect_error]));
+    die(json_encode(["error" => "Error de conexion: " . $conn->connect_error]));
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -34,7 +34,7 @@ switch ($method) {
             $stmt = $conn->prepare("SELECT * FROM productos WHERE id = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
-            $result = $stmt->get_result();
+            $result   = $stmt->get_result();
             $producto = $result->fetch_assoc();
 
             if ($producto) {
@@ -44,13 +44,11 @@ switch ($method) {
                 echo json_encode(["error" => "Producto no encontrado"]);
             }
         } else {
-            $result = $conn->query("SELECT * FROM productos");
+            $result    = $conn->query("SELECT * FROM productos");
             $productos = [];
-
             while ($row = $result->fetch_assoc()) {
                 $productos[] = $row;
             }
-
             echo json_encode($productos);
         }
     break;
@@ -69,14 +67,11 @@ switch ($method) {
         $precio = $input['precio'];
 
         $stmt = $conn->prepare("INSERT INTO productos (nombre, precio) VALUES (?, ?)");
-        $stmt->bind_param("sd", $nombre, $precio);
+        $stmt->bind_param("ss", $nombre, $precio);
 
         if ($stmt->execute()) {
             http_response_code(201);
-            echo json_encode([
-                "message" => "Producto creado",
-                "id" => $conn->insert_id
-            ]);
+            echo json_encode(["message" => "Producto creado", "id" => $conn->insert_id]);
         } else {
             http_response_code(500);
             echo json_encode(["error" => "Error al crear: " . $stmt->error]);
@@ -98,7 +93,7 @@ switch ($method) {
         $precio = $input['precio'];
 
         $stmt = $conn->prepare("UPDATE productos SET nombre = ?, precio = ? WHERE id = ?");
-        $stmt->bind_param("sdi", $nombre, $precio, $id);
+        $stmt->bind_param("ssi", $nombre, $precio, $id);
 
         if ($stmt->execute()) {
             echo json_encode(["message" => "Producto actualizado"]);
@@ -129,10 +124,9 @@ switch ($method) {
         }
     break;
 
-    // ================= ERROR =================
     default:
         http_response_code(405);
-        echo json_encode(["error" => "Método no permitido"]);
+        echo json_encode(["error" => "Metodo no permitido"]);
 }
 
 $conn->close();

@@ -1,0 +1,12 @@
+{
+  "name": "async-promesas",
+  "version": "1.0.0",
+  "description": "Doguito Petshop",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000 --static .",
+    "dev": "json-server --watch db.json --port 3000 --static ."
+  },
+  "dependencies": {
+    "json-server": "0.17.4"
+  }
+}

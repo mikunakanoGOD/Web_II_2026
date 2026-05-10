@@ -11,15 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 // conexion a la base de datos
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webII_2026";
+$username   = "root";
+$password   = "";
+$dbname     = "webII_2026";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     http_response_code(500);
-    die(json_encode(["error" => "Error de conexión: " . $conn->connect_error]));
+    die(json_encode(["error" => "Error de conexion: " . $conn->connect_error]));
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -28,13 +28,13 @@ switch ($method) {
 
     // ================= GET =================
     case 'GET':
-        $id_mascota = $_GET['id_mascota'] ?? null;
+        $id_mascota = $_GET['id'] ?? null;
 
         if ($id_mascota) {
             $stmt = $conn->prepare("SELECT * FROM mascotas WHERE id_mascota = ?");
             $stmt->bind_param("i", $id_mascota);
             $stmt->execute();
-            $result = $stmt->get_result();
+            $result  = $stmt->get_result();
             $mascota = $result->fetch_assoc();
 
             if ($mascota) {
@@ -44,13 +44,11 @@ switch ($method) {
                 echo json_encode(["error" => "Mascota no encontrada"]);
             }
         } else {
-            $result = $conn->query("SELECT * FROM mascotas");
+            $result   = $conn->query("SELECT * FROM mascotas");
             $mascotas = [];
-
             while ($row = $result->fetch_assoc()) {
                 $mascotas[] = $row;
             }
-
             echo json_encode($mascotas);
         }
     break;
@@ -65,21 +63,18 @@ switch ($method) {
             break;
         }
 
-        $nombre  = $input['nombre'];
-        $raza    = $input['raza'];
-        $edad    = $input['edad'];
-        $peso    = $input['peso'];
+        $nombre   = $input['nombre'];
+        $raza     = $input['raza'];
+        $edad     = $input['edad'];
+        $peso     = $input['peso'];
         $id_dueno = $input['id'];
 
         $stmt = $conn->prepare("INSERT INTO mascotas (nombre, raza, edad, peso, id) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssddi", $nombre, $raza, $edad, $peso, $id_dueno);
+        $stmt->bind_param("ssssi", $nombre, $raza, $edad, $peso, $id_dueno);
 
         if ($stmt->execute()) {
             http_response_code(201);
-            echo json_encode([
-                "message" => "Mascota creada",
-                "id_mascota" => $conn->insert_id
-            ]);
+            echo json_encode(["message" => "Mascota creada", "id_mascota" => $conn->insert_id]);
         } else {
             http_response_code(500);
             echo json_encode(["error" => "Error al crear: " . $stmt->error]);
@@ -104,7 +99,7 @@ switch ($method) {
         $id_dueno   = $input['id'];
 
         $stmt = $conn->prepare("UPDATE mascotas SET nombre = ?, raza = ?, edad = ?, peso = ?, id = ? WHERE id_mascota = ?");
-        $stmt->bind_param("ssddii", $nombre, $raza, $edad, $peso, $id_dueno, $id_mascota);
+        $stmt->bind_param("ssssii", $nombre, $raza, $edad, $peso, $id_dueno, $id_mascota);
 
         if ($stmt->execute()) {
             echo json_encode(["message" => "Mascota actualizada"]);
@@ -116,7 +111,7 @@ switch ($method) {
 
     // ================= DELETE =================
     case 'DELETE':
-        $id_mascota = $_GET['id_mascota'] ?? null;
+        $id_mascota = $_GET['id'] ?? null;
 
         if (!$id_mascota) {
             http_response_code(400);
@@ -135,10 +130,9 @@ switch ($method) {
         }
     break;
 
-    // ================= ERROR =================
     default:
         http_response_code(405);
-        echo json_encode(["error" => "Método no permitido"]);
+        echo json_encode(["error" => "Metodo no permitido"]);
 }
 
 $conn->close();

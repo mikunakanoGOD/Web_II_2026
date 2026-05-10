@@ -18,7 +18,7 @@ const obInfo = async()=>{
             raza.value = perfil.raza;
             edad.value = perfil.edad;
             peso.value = perfil.peso;
-            idDueno.value = perfil["id-dueño"];
+            idDueno.value = perfil.id;
         }else{
             throw new Error();
         }
