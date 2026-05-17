@@ -1,0 +1,26 @@
+{
+  "perfil": [
+    {
+      "nombre": "FULANITO",
+      "email": "fulanito@univalle.com",
+      "id": "1"
+    },
+    {
+      "nombre": "defdf122121",
+      "email": "aaa@gmail.com",
+      "id": "b0e6b976-d0e2-49bb-a789-19bf0fc65dd1"
+    }
+  ],
+  "pets": [
+    {
+      "nombre": "FULANITO",
+      "email": "fulanito@univalle.com",
+      "id": "1"
+    },
+    {
+      "nombre": "defdf122121",
+      "email": "aaa@gmail.com",
+      "id": "b0e6b976-d0e2-49bb-a789-19bf0fc65dd1"
+    }
+  ]
+}
