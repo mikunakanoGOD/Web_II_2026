@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineAdmin | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/cine/header.css" />
+    <style>
+      .dashboard {
+        padding: 3rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      .dashboard__title {
+        font-size: 2rem;
+        color: var(--primary-color);
+        font-weight: 600;
+        text-align: center;
+      }
+      .dashboard__subtitle {
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: -1.5rem;
+      }
+      .dashboard__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 900px;
+      }
+      .dash-card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        text-decoration: none;
+        color: var(--contrast-dark-color);
+        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        box-shadow: var(--shadow);
+      }
+      .dash-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px #e5091430;
+      }
+      .dash-card__icon { font-size: 2.8rem; margin-bottom: 0.75rem; display: block; }
+      .dash-card__label { font-size: 1.1rem; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <header class="header container">
+      <a href="index.html" class="header__logo-text">Cine<span>Admin</span></a>
+      <nav>
+        <ul class="header__list-nav">
+          <li class="header__link"><a href="index.html">Dashboard</a></li>
+          <li class="header__link"><a href="lista_peliculas.html">Películas</a></li>
+          <li class="header__link"><a href="lista_salas.html">Salas</a></li>
+          <li class="header__link"><a href="lista_horarios.html">Horarios</a></li>
+          <li class="header__link"><a href="lista_clientes.html">Clientes</a></li>
+          <li class="header__link"><a href="lista_boletos.html">Boletos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="dashboard container">
+      <h1 class="dashboard__title">Panel de Administración</h1>
+      <p class="dashboard__subtitle">Gestiona todas las entidades del cine desde aquí</p>
+      <div class="dashboard__grid">
+        <a href="lista_peliculas.html" class="dash-card">
+          <span class="dash-card__label">Películas</span>
+        </a>
+        <a href="lista_salas.html" class="dash-card">
+          <span class="dash-card__label">Salas</span>
+        </a>
+        <a href="lista_horarios.html" class="dash-card">
+          <span class="dash-card__label">Horarios</span>
+        </a>
+        <a href="lista_clientes.html" class="dash-card">
+          <span class="dash-card__label">Clientes</span>
+        </a>
+        <a href="lista_boletos.html" class="dash-card">
+          <span class="dash-card__label">Boletos</span>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--header-bg);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__logo-text {
+  font-family: var(--font-family-logo);
+  font-size: var(--font-size-logo);
+  color: var(--primary-color);
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.header__logo-text span {
+  color: var(--contrast-dark-color);
+}
+
+.header__list-nav {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.header__link a {
+  color: var(--contrast-dark-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header__link a:hover {
+  color: var(--primary-color);
+  background-color: var(--transparency-color);
+}

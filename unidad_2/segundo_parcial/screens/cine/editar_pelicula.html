@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineAdmin | Editar Película</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/cine/header.css" />
+    <link rel="stylesheet" href="../../css/cine/card.css" />
+    <link rel="stylesheet" href="../../css/cine/button.css" />
+  </head>
+  <body>
+    <header class="header container">
+      <a href="index.html" class="header__logo-text">Cine<span>Admin</span></a>
+      <nav>
+        <ul class="header__list-nav">
+          <li class="header__link"><a href="index.html">Dashboard</a></li>
+          <li class="header__link"><a href="lista_peliculas.html">Películas</a></li>
+          <li class="header__link"><a href="lista_salas.html">Salas</a></li>
+          <li class="header__link"><a href="lista_horarios.html">Horarios</a></li>
+          <li class="header__link"><a href="lista_clientes.html">Clientes</a></li>
+          <li class="header__link"><a href="lista_boletos.html">Boletos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="form-section container">
+      <section class="card">
+        <h1 class="card__title">Editar Película</h1>
+        <form class="flex flex--column" data-form>
+          <div class="input-container">
+            <input name="titulo" id="titulo" class="input" type="text" placeholder="Título" required data-titulo />
+            <label class="input-label" for="titulo">Título</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <input name="genero" id="genero" class="input" type="text" placeholder="Género" required data-genero />
+            <label class="input-label" for="genero">Género</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <input name="duracion_min" id="duracion_min" class="input" type="number" placeholder="Duración (min)" required min="1" data-duracion />
+            <label class="input-label" for="duracion_min">Duración (minutos)</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <select name="clasificacion" id="clasificacion" class="input" required data-clasificacion>
+              <option value="" disabled>Clasificación</option>
+              <option value="G">G</option>
+              <option value="PG">PG</option>
+              <option value="PG-13">PG-13</option>
+              <option value="R">R</option>
+            </select>
+            <label class="input-label" for="clasificacion">Clasificación</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <button type="submit" class="button">Guardar Cambios</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="../../controllers/cine/editar_pelicula_controller.js"></script>
+  </body>
+</html>

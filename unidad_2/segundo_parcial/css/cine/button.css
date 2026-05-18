@@ -1,0 +1,62 @@
+/* ── Botones ── */
+.button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: var(--font-size-button);
+  font-family: var(--font-family);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s, transform 0.1s;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.button:hover {
+  background-color: #b0060f;
+  transform: translateY(-1px);
+}
+
+/* Botón pequeño para acciones en tabla */
+.simple-button {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-family);
+  transition: background 0.2s;
+}
+
+.simple-button--add {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.simple-button--add:hover {
+  background-color: #b0060f;
+}
+
+.simple-button--edit {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.simple-button--edit:hover {
+  background-color: #d68910;
+}
+
+.simple-button--delete {
+  background-color: transparent;
+  color: var(--info-color);
+  border: 1px solid var(--info-color);
+}
+
+.simple-button--delete:hover {
+  background-color: var(--info-color);
+  color: #fff;
+}

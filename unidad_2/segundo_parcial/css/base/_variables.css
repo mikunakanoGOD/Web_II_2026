@@ -1,0 +1,39 @@
+:root {
+  --font-family: "Montserrat", sans-serif;
+  --font-family-logo: "Pacifico", cursive;
+
+  --font-input: 300;
+
+  --font-size-logo: 28px;
+  --font-size-card-title: 28px;
+  --font-size-input-label: 20px;
+  --font-size-button: 22px;
+  --font-size-form-fieldset: 22px;
+  --font-size-table-header: 22px;
+  --font-size-modal-title: 28px;
+  --font-size-modal-button: 28px;
+
+  /* Paleta cine: oscuro con acento rojo */
+  --primary-color: #e50914;
+  --secundary-color: #141414;
+  --contrast-dark-color: #f0f0f0;
+  --contrast-ligth-color: #1f1f1f;
+  --info-color: #ff6b6b;
+  --sucess-color: #2ecc71;
+  --transparency-color: #ffffff1a;
+
+  --shadow: 0 5px 20px #e5091440;
+
+  /* Extras cine */
+  --card-bg: #1f1f1f;
+  --header-bg: #0a0a0a;
+  --input-bg: #2a2a2a;
+  --border-color: #333;
+  --text-muted: #888;
+}
+
+@media (min-width: 800px) {
+  :root {
+    --font-size-logo: 48px;
+  }
+}

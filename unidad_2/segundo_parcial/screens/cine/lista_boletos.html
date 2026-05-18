@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineAdmin | Boletos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/cine/header.css" />
+    <link rel="stylesheet" href="../../css/cine/table.css" />
+    <link rel="stylesheet" href="../../css/cine/button.css" />
+    <link rel="stylesheet" href="../../css/cine/modal.css" />
+  </head>
+  <body>
+    <header class="header container">
+      <a href="index.html" class="header__logo-text">Cine<span>Admin</span></a>
+      <nav>
+        <ul class="header__list-nav">
+          <li class="header__link"><a href="index.html">Dashboard</a></li>
+          <li class="header__link"><a href="lista_peliculas.html">Películas</a></li>
+          <li class="header__link"><a href="lista_salas.html">Salas</a></li>
+          <li class="header__link"><a href="lista_horarios.html">Horarios</a></li>
+          <li class="header__link"><a href="lista_clientes.html">Clientes</a></li>
+          <li class="header__link"><a href="lista_boletos.html">Boletos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="table__column--p">Cliente</th>
+            <th class="table__column--g">Película</th>
+            <th class="table__column--m">Sala</th>
+            <th class="table__column--m">Fecha</th>
+            <th class="table__column--m">Asiento</th>
+            <th class="table__column--m table__align--right">
+              <a href="registrar_boleto.html" class="simple-button simple-button--add">+ Nuevo Boleto</a>
+            </th>
+          </tr>
+        </thead>
+        <tbody data-table></tbody>
+      </table>
+
+      <div class="modal-container modal--close">
+        <article class="modal">
+          <h2 class="modal__title">Eliminar boleto</h2>
+          <button class="modal__close">✕</button>
+          <p class="modal__text">¿Estás seguro de que deseas eliminar este boleto?</p>
+          <div class="modal__button-container">
+            <button class="modal__button modal__button--confirm">Eliminar</button>
+            <button class="modal__button">Cancelar</button>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <script type="module" src="../../controllers/cine/boletos_controller.js"></script>
+  </body>
+</html>

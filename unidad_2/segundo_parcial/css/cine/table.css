@@ -1,0 +1,53 @@
+/* ── Tabla ── */
+.table-container {
+  padding: 2rem 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.table thead {
+  background-color: var(--primary-color);
+}
+
+.table th {
+  padding: 1rem 1.2rem;
+  text-align: left;
+  font-size: var(--font-size-table-header);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--contrast-dark-color);
+  font-size: 0.95rem;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background-color: var(--transparency-color);
+}
+
+.table__column--p { width: 25%; }
+.table__column--m { width: 20%; }
+.table__column--g { width: 30%; }
+.table__align--right { text-align: right; }
+
+@media (min-width: 1200px) {
+  .table-container {
+    padding-left: calc((100vw - 960px) / 2);
+    padding-right: calc((100vw - 960px) / 2);
+  }
+}

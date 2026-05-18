@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineAdmin | Nuevo Cliente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/cine/header.css" />
+    <link rel="stylesheet" href="../../css/cine/card.css" />
+    <link rel="stylesheet" href="../../css/cine/button.css" />
+  </head>
+  <body>
+    <header class="header container">
+      <a href="index.html" class="header__logo-text">Cine<span>Admin</span></a>
+      <nav>
+        <ul class="header__list-nav">
+          <li class="header__link"><a href="index.html">Dashboard</a></li>
+          <li class="header__link"><a href="lista_peliculas.html">Películas</a></li>
+          <li class="header__link"><a href="lista_salas.html">Salas</a></li>
+          <li class="header__link"><a href="lista_horarios.html">Horarios</a></li>
+          <li class="header__link"><a href="lista_clientes.html">Clientes</a></li>
+          <li class="header__link"><a href="lista_boletos.html">Boletos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="form-section container">
+      <section class="card">
+        <h1 class="card__title">Nuevo Cliente</h1>
+        <form class="flex flex--column" data-form>
+          <div class="input-container">
+            <input name="nombre" id="nombre" class="input" type="text" placeholder="Nombre completo" required data-nombre />
+            <label class="input-label" for="nombre">Nombre</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <input name="email" id="email" class="input" type="email" placeholder="correo@ejemplo.com" required data-email />
+            <label class="input-label" for="email">Email</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <input name="telefono" id="telefono" class="input" type="tel" placeholder="Teléfono (opcional)" data-telefono />
+            <label class="input-label" for="telefono">Teléfono</label>
+          </div>
+          <button type="submit" class="button">Registrar Cliente</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="../../controllers/cine/registrar_cliente_controller.js"></script>
+  </body>
+</html>

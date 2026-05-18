@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineAdmin | Editar Sala</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/cine/header.css" />
+    <link rel="stylesheet" href="../../css/cine/card.css" />
+    <link rel="stylesheet" href="../../css/cine/button.css" />
+  </head>
+  <body>
+    <header class="header container">
+      <a href="index.html" class="header__logo-text">Cine<span>Admin</span></a>
+      <nav>
+        <ul class="header__list-nav">
+          <li class="header__link"><a href="index.html">Dashboard</a></li>
+          <li class="header__link"><a href="lista_peliculas.html">Películas</a></li>
+          <li class="header__link"><a href="lista_salas.html">Salas</a></li>
+          <li class="header__link"><a href="lista_horarios.html">Horarios</a></li>
+          <li class="header__link"><a href="lista_clientes.html">Clientes</a></li>
+          <li class="header__link"><a href="lista_boletos.html">Boletos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="form-section container">
+      <section class="card">
+        <h1 class="card__title">Editar Sala</h1>
+        <form class="flex flex--column" data-form>
+          <div class="input-container">
+            <input name="nombre" id="nombre" class="input" type="text" placeholder="Nombre de la sala" required data-nombre />
+            <label class="input-label" for="nombre">Nombre</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <input name="capacidad" id="capacidad" class="input" type="number" placeholder="Capacidad" required min="1" data-capacidad />
+            <label class="input-label" for="capacidad">Capacidad (personas)</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <div class="input-container">
+            <select name="tipo" id="tipo" class="input" required data-tipo>
+              <option value="" disabled>Tipo de sala</option>
+              <option value="2D">2D</option>
+              <option value="3D">3D</option>
+              <option value="IMAX">IMAX</option>
+              <option value="4DX">4DX</option>
+            </select>
+            <label class="input-label" for="tipo">Tipo</label>
+            <span class="input-menssage-error">Este campo es requerido</span>
+          </div>
+          <button type="submit" class="button">Guardar Cambios</button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="../../controllers/cine/editar_sala_controller.js"></script>
+  </body>
+</html>

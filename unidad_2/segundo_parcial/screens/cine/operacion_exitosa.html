@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineAdmin | Operación exitosa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/base/base.css" />
+    <link rel="stylesheet" href="../../css/cine/header.css" />
+    <link rel="stylesheet" href="../../css/cine/card.css" />
+    <link rel="stylesheet" href="../../css/cine/button.css" />
+    <link rel="stylesheet" href="../../css/cine/success.css" />
+  </head>
+  <body>
+    <header class="header container">
+      <a href="index.html" class="header__logo-text">Cine<span>Admin</span></a>
+      <nav>
+        <ul class="header__list-nav">
+          <li class="header__link"><a href="index.html">Dashboard</a></li>
+          <li class="header__link"><a href="lista_peliculas.html">Películas</a></li>
+          <li class="header__link"><a href="lista_salas.html">Salas</a></li>
+          <li class="header__link"><a href="lista_horarios.html">Horarios</a></li>
+          <li class="header__link"><a href="lista_clientes.html">Clientes</a></li>
+          <li class="header__link"><a href="lista_boletos.html">Boletos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="form-section container">
+      <section class="card success-card">
+        <span class="success-card__icon">✅</span>
+        <h1 class="success-card__title card__title" id="msg">¡Operación completada!</h1>
+        <a href="#" id="btn-volver" class="button">Volver</a>
+      </section>
+    </main>
+
+    <script>
+      // Lee parámetros de la URL: ?msg=...&back=...
+      const params = new URLSearchParams(window.location.search);
+      const msg = params.get("msg");
+      const back = params.get("back");
+      if (msg) document.getElementById("msg").textContent = msg;
+      if (back) document.getElementById("btn-volver").href = back;
+    </script>
+  </body>
+</html>
